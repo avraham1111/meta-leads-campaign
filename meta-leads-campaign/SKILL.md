@@ -9,7 +9,8 @@ description: >-
   structure per budget tier (30/100/200/400+ ILS/day), learning phase,
   benchmarks, optimization, creative fatigue, and real-lead/ROAS measurement.
   Use whenever a Meta lead campaign is being planned, built, fixed or scaled.
-  For Avraham's own ad copy voice also load avraham-leshem-style.
+  If a brand-voice skill is also available, load it alongside this one for the
+  ad copy.
 ---
 
 # Meta Leads Campaign — Operating Protocol
@@ -53,7 +54,7 @@ them.
 | Identity verification, 2FA, accepting Meta's terms | Tied to them personally |
 
 For each of these: open the exact screen, tell them the one thing to click, and
-wait with them. The honest framing to the client is *"יש בדיוק שישה דברים
+wait with them. The honest framing to the client is *"יש בדיוק ארבעה דברים
 שתצטרך לעשות בעצמך, כל השאר עליי"* — a short, bounded list is reassuring. A
 vague "I'll do everything" that collapses on the first blocker is not.
 
@@ -552,20 +553,39 @@ claude mcp add --transport http --scope user meta-ads https://mcp.facebook.com/a
 
 then `/mcp` to authenticate.
 
+If authentication fails there, know why before you start guessing: Meta
+documents a variant of this command carrying a Meta **app** ID —
+`claude mcp add --transport http --client-id <META_APP_ID> meta-ads
+https://mcp.facebook.com/ads` — on the page written for people who own a Meta
+developer app. A normal advertiser does not own one, and Meta says plainly that
+owning an app is not a prerequisite. So try the plain command first; if it will
+not authenticate and the client has no developer app, **do not send them off to
+create one** — switch them to the desktop or web connector route above, which
+needs no app at all, and carry on there.
+
 **On permissions — this matters.** Meta's minimum is `ads_mcp_management` plus
 either `ads_read` or `ads_management`. **`ads_read` alone only lets you read.**
 To build and edit campaigns the client must grant **`ads_management`**. Extra
 scopes unlock more: `business_management`, `pages_show_list`, `instagram_basic`,
 `catalog_management`.
 
-Be straight with the client about what write access means: Meta's own
-documentation states the agent "can directly call anything your granted
-permissions allow, without asking you first", and Meta's general advice is to
-grant read-only unless changes are needed. Here changes *are* the job — so say
-so plainly rather than letting them click through it: *"אתה נותן לי הרשאה לבנות
-ולשנות קמפיינים בחשבון שלך. בלי זה אוכל רק לקרוא נתונים."* They can review and
-revoke it later under **Settings** ← **Your Activity** ← **Business
-Integrations**.
+Be straight with the client about what write access means, and be accurate about
+it — there is a safety net here and they deserve to know it exists. Meta's
+documentation states: *"Write tools create entities in a paused state; your AI
+client asks for confirmation before activation."* Activation is a separate tool
+of its own (`ads_activate_entity`), so nothing you build starts spending by
+itself.
+
+Say both halves: *"אתה נותן לי הרשאה לבנות ולשנות קמפיינים בחשבון שלך — בלי זה
+אוכל רק לקרוא נתונים. אבל כל מה שאני בונה נוצר מושהה, ולא יוצא לאוויר בלי
+שתאשר."* That is the truth, it is reassuring, and it matches the rule you are
+bound by anyway.
+
+They can disconnect it whenever they want — from Claude's own **Connectors**
+screen, and on Facebook's side under their account's connected business
+integrations. Do not recite an exact click path for the Facebook side unless you
+have just seen it; the settings get renamed, and sending a client hunting
+through menus that do not match is worse than saying "I'll find it with you".
 
 Note for yourself: the login window is Facebook's, not Google's — say "פייסבוק"
 so they are not looking for the wrong screen.
