@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>התקנת סוכן הקמפיינים</title>
+<style>
+  :root{
+    --bg:#ffffff; --fg:#14161a; --muted:#5b6472; --line:#e3e7ec;
+    --accent:#1f6feb; --soft:#f5f7fa; --warn:#8a5a00; --warnbg:#fff8e6;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--bg); color:var(--fg);
+    font-family:"Segoe UI",Arial,Helvetica,sans-serif;
+    font-size:17px; line-height:1.75;
+  }
+  .wrap{max-width:780px; margin:0 auto; padding:5vw}
+  header{border-bottom:2px solid var(--fg); padding-bottom:22px; margin-bottom:36px}
+  h1{font-size:2em; margin:0 0 10px; letter-spacing:-.02em}
+  .sub{color:var(--muted); margin:0}
+  h2{font-size:1.35em; margin:46px 0 14px; padding-top:22px; border-top:1px solid var(--line)}
+  h2:first-of-type{border-top:0; padding-top:0}
+  h3{font-size:1.05em; margin:28px 0 8px}
+  p{margin:0 0 14px}
+  ol,ul{margin:0 0 14px; padding-inline-start:1.4em}
+  li{margin-bottom:7px}
+  code{
+    background:var(--soft); border:1px solid var(--line); border-radius:5px;
+    padding:2px 7px; font-family:Consolas,monospace; font-size:.88em;
+    direction:ltr; display:inline-block;
+  }
+  .url{
+    display:block; background:var(--soft); border:1px solid var(--line);
+    border-radius:8px; padding:14px 16px; margin:14px 0;
+    font-family:Consolas,monospace; direction:ltr; text-align:left;
+    font-size:.95em; word-break:break-all;
+  }
+  table{width:100%; border-collapse:collapse; margin:18px 0; font-size:.96em}
+  th,td{text-align:right; padding:11px 12px; border-bottom:1px solid var(--line); vertical-align:top}
+  th{background:var(--soft); font-weight:600}
+  .note{
+    background:var(--warnbg); border:1px solid #f0dca8; border-radius:10px;
+    padding:16px 18px; margin:20px 0; color:var(--warn);
+  }
+  .note strong{color:#6b4600}
+  .step{
+    display:inline-block; background:var(--fg); color:#fff; border-radius:50%;
+    width:1.7em; height:1.7em; line-height:1.7em; text-align:center;
+    font-size:.78em; margin-inline-end:8px; font-weight:700;
+  }
+  .ask{
+    border-inline-start:3px solid var(--accent); background:var(--soft);
+    padding:14px 18px; margin:18px 0; border-radius:0 10px 10px 0;
+  }
+  footer{margin-top:56px; padding-top:20px; border-top:1px solid var(--line); color:var(--muted); font-size:.9em}
+  @media print{ body{font-size:12pt} .wrap{padding:0} h2{page-break-after:avoid} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>התקנת סוכן הקמפיינים</h1>
+  <p class="sub">שלוש דקות, פעם אחת. אחרי זה ה־Claude שלך יודע לנהל את הקמפיין שלך בכל שיחה חדשה.</p>
+</header>
+
+<p>
+  קיבלת קובץ בשם <code>meta-leads-campaign.zip</code>. אחרי ההתקנה ה־Claude שלך
+  יידע לשאול את השאלות הנכונות, לבנות את הקמפיין, לעקוב אחרי הנתונים ולהמליץ מה
+  לעשות — בלי שתצטרך להסביר לו מחדש כל פעם.
+</p>
+
+<p style="text-align:center; margin:30px 0">
+  <a href="meta-leads-campaign.zip" download
+     style="display:inline-block; background:var(--fg); color:#fff; text-decoration:none;
+            padding:15px 38px; border-radius:10px; font-size:1.05em; font-weight:600">
+    הורדת הסוכן ⬅
+  </a>
+</p>
+
+<div class="note">
+  <strong>הדרך הקצרה:</strong> תפתח שיחה חדשה ב־Claude, תצרף את קובץ ה־ZIP ותכתוב
+  <em>"תתקין לי את הסקיל המצורף"</em>. אם זה עבד — דלג לשלב 3. אם לא, המשך לפי השלבים.
+</div>
+
+<div class="note" style="background:var(--soft); border-color:var(--line); color:var(--fg)">
+  <strong>עובד ב־Claude Code?</strong> אל תוריד כלום. תדביק לקלוד שלך את זה:
+  <span class="url" style="margin-top:10px; direction:rtl; text-align:right">תתקין לי את הסקיל מהריפו הזה: https://github.com/avraham1111/meta-leads-campaign</span>
+</div>
+
+<h2><span class="step">1</span>להפעיל את היכולת</h2>
+<ol>
+  <li>בתוך Claude: <strong>Settings</strong> (הגדרות)</li>
+  <li><strong>Capabilities</strong></li>
+  <li>להפעיל את <strong>Create and edit files</strong></li>
+</ol>
+
+<h2><span class="step">2</span>להעלות את הקובץ</h2>
+<ol>
+  <li><strong>Settings</strong> ← <strong>Customize</strong> ← <strong>Skills</strong></li>
+  <li>ללחוץ על כפתור <strong>+</strong></li>
+  <li>לבחור <strong>Create skill</strong></li>
+  <li>לבחור <strong>Upload a skill</strong></li>
+  <li>להעלות את <code>meta-leads-campaign.zip</code> — <strong>את ה־ZIP כמו שהוא, בלי לפתוח אותו</strong></li>
+</ol>
+
+<h2><span class="step">3</span>לחבר את Claude לחשבון המודעות שלך</h2>
+<p>
+  <strong>בלי השלב הזה הסוכן לא יוכל לבנות לך כלום בפועל</strong> — הוא יידע את
+  השיטה, אבל לא תהיה לו גישה לחשבון.
+</p>
+<ol>
+  <li><strong>Settings</strong> ← <strong>Connectors</strong> ← <strong>Add custom connector</strong><br>
+      <span style="color:var(--muted)">זה לא נמצא בחיפוש — צריך להוסיף ידנית</span></li>
+  <li>שם: <code>Meta Ads</code></li>
+  <li>כתובת — להעתיק בדיוק כך:</li>
+</ol>
+<span class="url">https://mcp.facebook.com/ads</span>
+<ol start="4">
+  <li>ייפתח חלון התחברות של <strong>פייסבוק</strong> (לא גוגל). להתחבר עם החשבון שמנהל את חשבון המודעות</li>
+  <li>לבחור את העסק וחשבון המודעות שהחיבור יחול עליהם</li>
+  <li><strong>לאשר את ההרשאות</strong> שמטא מבקשת</li>
+</ol>
+
+<div class="note">
+  <strong>חשוב על שלב 6:</strong> אם תאשר רק הרשאת קריאה, הסוכן יוכל להראות לך
+  נתונים אבל <strong>לא יוכל לבנות או לשנות קמפיינים</strong>. כדי שהוא יעבוד
+  בשבילך צריך גם הרשאת ניהול (<code>ads_management</code>). זה אומר שהוא יוכל
+  ליצור ולערוך קמפיינים בחשבון שלך — וזו בדיוק המטרה. תמיד אפשר לבטל אחר כך
+  בפייסבוק תחת <strong>Settings ← Your Activity ← Business Integrations</strong>.
+  <br><br>
+  שים לב שהכתובת מסתיימת ב־<code>/ads</code>. בלי זה החיבור לא יעבוד.
+</div>
+
+<h2><span class="step">4</span>להכין תיקייה אחת עם כל החומרים</h2>
+<p>זה יחסוך לך חצי מהשאלות ויאפשר לסוכן לעבוד מהר.</p>
+<p>צור תיקייה אחת (במחשב או בדרייב) ושים בה את כל מה שקשור לקמפיין:</p>
+<ul>
+  <li><strong>סרטונים</strong> — כל מה שיש, גם גלם</li>
+  <li><strong>תמונות ומודעות מעוצבות</strong></li>
+  <li><strong>טקסטים</strong> — אם כבר כתבת משהו</li>
+  <li><strong>לינקים</strong> — דף הנחיתה, דף התודה, האתר</li>
+  <li><strong>חומרי מותג</strong> — לוגו, צבעים, אם יש</li>
+</ul>
+<p>
+  כשהסוכן ישאל, תצרף לו את התיקייה. הוא גם ישמור בתוכה <strong>קובץ מעקב</strong>
+  של הקמפיין — מה הוגדר, איזה תקציב אושר, מה נוסה ומה התוצאות. ככה גם אם תפתח
+  שיחה חדשה בעוד חודש, הוא יידע בדיוק איפה הדברים עומדים.
+</p>
+
+<h2><span class="step">5</span>גישה לדף הנחיתה — רק אם יש לך דף</h2>
+<p>
+  כדי שהסוכן יתקין את המעקב בעצמו ולא רק יסביר לך איך, הוא צריך דרך להיכנס לדף.
+  <strong>אתה לא צריך לדעת מה נכון</strong> — תשלח לו את הלינק והוא יבדוק לבד על
+  מה הדף בנוי.
+</p>
+<table>
+  <thead><tr><th>אם הדף בנוי ב…</th><th>מה הוא יבקש</th></tr></thead>
+  <tbody>
+    <tr><td>וורדפרס</td><td>סיסמת אפליקציה — הוא ידריך אותך איך מייצרים, חצי דקה</td></tr>
+    <tr><td>קוד או AI (קלוד, Lovable)</td><td>MCP ייעודי לאתר אם יש, או גיטהאב / וורסל, או התיקייה</td></tr>
+    <tr><td>Wix, שופיפיי, סמוב, רב מסר</td><td>כלום — הוא יפתח לך את המסך הנכון ותדביק מזהה אחד</td></tr>
+    <tr><td>לא יודע</td><td>רק את הלינק. הוא יבדוק מה זה ויגיד לך</td></tr>
+  </tbody>
+</table>
+<p>
+  אם אתה לא רוצה לתת גישה — זה בסדר. תשלח רק את הלינק, והוא ידריך אותך בדיוק מה
+  להדביק ואיפה.
+</p>
+
+<h2>איך יודעים שזה עבד</h2>
+<p>לפתוח שיחה חדשה ולכתוב:</p>
+<div class="ask">אני רוצה להרים קמפיין לידים בפייסבוק</div>
+<p>
+  אם ההתקנה הצליחה, Claude יתחיל לשאול אותך שאלות קצרות עם אפשרויות לבחירה —
+  סוג העסק, תקציב, מה יש לך כבר — ולא ייתן תשובה כללית.
+</p>
+
+<h2>איך עובדים עם זה</h2>
+<p>
+  <strong>בהתחלה</strong> — פשוט תגיד שאתה רוצה להרים קמפיין. הוא ישאל את כל מה
+  שצריך, יבקש את הקישורים, ויגיד לך בדיוק מה חסר.
+</p>
+<p>
+  <strong>אל תדאג אם אתה לא מבין בהגדרות טכניות.</strong> זה בדיוק התפקיד שלו. אם
+  צריך לחבר פיקסל או להגדיר משהו — הוא יבקש גישה ויעשה את זה בעצמו. הדבר היחיד
+  שתצטרך לעשות לבד זה להעלות את הסרטונים והתמונות למטא, והוא ילווה אותך גם בזה.
+</p>
+<p><strong>אחרי שהקמפיין באוויר</strong> — תיכנס פעם בכמה ימים ותשאל:</p>
+<div class="ask">מה קורה עם הקמפיין?</div>
+<p>הוא ימשוך את הנתונים, יסביר מה קורה, ויציע מה לעשות הלאה.</p>
+
+<h2>מה הוא לא יעשה בלי אישור שלך</h2>
+<ul>
+  <li><strong>לא יקבע תקציב לבד.</strong> הוא ימליץ, אתה מאשר את הסכום המדויק</li>
+  <li><strong>לא יפעיל, יעצור או ישנה תקציב</strong> בלי "כן" מפורש ממך</li>
+  <li><strong>לא ימציא נתונים.</strong> כל מספר שהוא אומר בא ממטא, מהאתר שלך או ממך</li>
+  <li><strong>לא יעלה קמפיין בלי תקציב מוגדר ובלי תאריך סיום או תאריך בדיקה</strong></li>
+  <li><strong>לא יגע באמצעי התשלום.</strong> כרטיס אשראי זה תמיד אתה, בעצמך</li>
+</ul>
+
+<h2>שאלות נפוצות</h2>
+<h3>האם זה עולה כסף?</h3>
+<p>לא. זה קובץ הגדרות ל־Claude שלך.</p>
+<h3>האם מישהו אחר רואה את הנתונים שלי?</h3>
+<p>לא. הסקיל פרטי לחשבון שלך.</p>
+<h3>אני עובד עם Claude Code ולא באפליקציה — מה לעשות?</h3>
+<p>תגיד ל־Claude "תתקין את הסקיל המצורף" ותצרף את הקובץ. הוא יודע לעשות את זה בעצמו.</p>
+<h3>ההעלאה נכשלה</h3>
+<p>
+  לוודא שהעלית את קובץ ה־ZIP עצמו ולא תיקייה פתוחה, ושהיכולת
+  "Create and edit files" מופעלת (שלב 1).
+</p>
+
+<footer>
+  נבנה על ידי אברהם לשם · מערכות קורסים פרימיום
+</footer>
+
+</div>
+</body>
+</html>
