@@ -553,15 +553,10 @@ claude mcp add --transport http --scope user meta-ads https://mcp.facebook.com/a
 
 then `/mcp` to authenticate.
 
-If authentication fails there, know why before you start guessing: Meta
-documents a variant of this command carrying a Meta **app** ID —
-`claude mcp add --transport http --client-id <META_APP_ID> meta-ads
-https://mcp.facebook.com/ads` — on the page written for people who own a Meta
-developer app. A normal advertiser does not own one, and Meta says plainly that
-owning an app is not a prerequisite. So try the plain command first; if it will
-not authenticate and the client has no developer app, **do not send them off to
-create one** — switch them to the desktop or web connector route above, which
-needs no app at all, and carry on there.
+**No Meta developer app is needed** — not here and not on the connector route.
+If anything suggests otherwise, it does not apply to an ordinary advertiser, and
+you never send a client off to create one. If the command will not authenticate,
+move them to the desktop or web connector route above and carry on there.
 
 **On permissions — this matters.** Meta's minimum is `ads_mcp_management` plus
 either `ads_read` or `ads_management`. **`ads_read` alone only lets you read.**
